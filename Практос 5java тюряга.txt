@@ -1,0 +1,63 @@
+public class PrisonProgram {
+
+    // 3 статические переменные
+    private static int numberOfPrisoners = 0;
+    private static int numberOfGuards = 10;
+    private static boolean isPrisonBreak = false;
+
+    // 3 обычные функции (не статичные)
+    
+    // Функция для приема новых заключенных
+    public void admitPrisoners(int count) {
+        numberOfPrisoners += count;
+        System.out.println(count + " новых заключенных были приняты. Всего в тюрьме: " + numberOfPrisoners);
+    }
+
+    // Функция для увольнения охранников
+    public void dismissGuards(int count) {
+        numberOfGuards -= count;
+        System.out.println(count + " охранников были уволены. Осталось охранников: " + numberOfGuards);
+    }
+
+    // Функция для обнаружения побега
+    public void detectPrisonBreak() {
+        if (isPrisonBreak) {
+            System.out.println("Побег из тюрьмы обнаружен!");
+        } else {
+            System.out.println("Побега из тюрьмы не обнаружено.");
+        }
+    }
+
+    // Функции, относящиеся к ответвлению от стандартных функций
+
+    // Функция для усиления охраны после побега
+    public void reinforceSecurity() {
+        if (isPrisonBreak) {
+            numberOfGuards += 5;
+            isPrisonBreak = false;
+            System.out.println("Охрана усилена. Осталось охранников: " + numberOfGuards);
+        } else {
+            System.out.println("Нет необходимости усиливать охрану.");
+        }
+    }
+
+    // Функция для проверки наличия заключенных в тюрьме
+    public void checkPrisonersPresence() {
+        if (numberOfPrisoners > 0) {
+            System.out.println("В тюрьме находятся заключенные.");
+        } else {
+            System.out.println("Тюрьма пуста.");
+        }
+    }
+
+    public static void main(String[] args) {
+        PrisonProgram prison = new PrisonProgram();
+
+        // Пример использования функций
+        prison.admitPrisoners(20);
+        prison.dismissGuards(3);
+        prison.detectPrisonBreak();
+        prison.reinforceSecurity();
+        prison.checkPrisonersPresence();
+    }
+}
